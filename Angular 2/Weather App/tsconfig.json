@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "system",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "outDir": "./app"
+  },
+  "filesGlob": [
+    "./dev/**/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  },
+  "files": [
+    "./dev/app.component.ts",
+    "./dev/boot.ts",
+    "./dev/profile.service.ts",
+    "./dev/profile.ts",
+    "./dev/sidebar.component.ts",
+    "./dev/weather/weather-item.component.ts",
+    "./dev/weather/weather-item.ts",
+    "./dev/weather/weather-list.component.ts",
+    "./dev/weather/weather-search.component.ts",
+    "./dev/weather/weather.data.ts",
+    "./dev/weather/weather.service.ts"
+  ]
+}

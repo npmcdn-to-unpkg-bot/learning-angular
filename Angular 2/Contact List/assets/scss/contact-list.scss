@@ -1,0 +1,25 @@
+$brandBlue: #233dcb;
+$brandRed: #e62117;
+
+ul {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+
+  li {
+    cursor: pointer;
+    transition: padding 0.3s;
+
+    &:hover {
+      padding-left: 8px;
+      color: $brandBlue;
+      font-weight: bold;
+      border-left: 3px solid $brandBlue;
+    }
+  }
+
+  .clicked {
+    color: $brandRed;
+    font-weight: bold;
+  }
+}

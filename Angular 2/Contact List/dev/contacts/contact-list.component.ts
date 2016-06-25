@@ -8,9 +8,9 @@ import {Contact} from './contact';
   template: `
     <h1>Contact List</h1>
     <ul>
-      <li *ngFor="#contact of contacts" (click)="onSelect(contact)" [class.clicked]="selectedContact === contact">{{ contact.firstName }} {{ contact.lastName }}</li>
+      <li *ngFor="#contact of contacts" (click)="onSelect(contact)" [class.clicked]="selectedContact === contact">{{ contact.firstName }} {{ contact.lastName | uppercase }}</li>
     </ul>
-    <contact [contact]="selectedContact"></contact>
+    <contact *ngIf="selectedContact !== null" [contact]="selectedContact"></contact>
   `,
   directives: [ContactComponent],
   providers: [ContactService],
@@ -21,7 +21,7 @@ import {Contact} from './contact';
 export class ContactListComponent implements OnInit {
   public contacts: Contact[];
 
-  public selectedContact = {};
+  public selectedContact = null;
 
   constructor(private _contactService: ContactService) {}
 

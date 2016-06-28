@@ -1,0 +1,25 @@
+  /* MAIN */
+.main-logo{
+  margin: 0 auto;
+  max-width: 500px;
+}
+h2 {
+  text-align: center;
+}
+
+  /* NAV */
+nav p {
+  text-align: center;
+}
+  nav p a {
+    padding: 5px;
+  }
+
+
+  /* FOOTER */
+footer {
+  margin: 15px;
+}
+  footer p {
+    text-align: center;
+  }

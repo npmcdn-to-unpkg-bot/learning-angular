@@ -15,6 +15,27 @@ nav p {
     padding: 5px;
   }
 
+  /* PRODUCTS */
+.main-products {
+  min-height: 400px;
+  padding: 5px;
+}
+  .main-products h4 {
+    height: 40px;
+  }
+  .product-image {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+  }
+  .btn-cap {
+		background: #0091ce;
+		color: white;
+	}
+		.btn-cap:hover {
+			background: #037eb1;
+			color: white;
+		}
 
   /* FOOTER */
 footer {

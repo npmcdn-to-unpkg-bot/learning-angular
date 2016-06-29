@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {ProductsComponent} from './products.component';
 import {AddProductComponent} from './add-product.component';
+import {Product} from './product';
 
 @Component({
   selector: 'my-app',

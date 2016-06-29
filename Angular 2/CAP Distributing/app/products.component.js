@@ -9,15 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var product_service_1 = require('./product.service');
 var ProductsComponent = (function () {
-    function ProductsComponent() {
+    function ProductsComponent(_productService) {
+        this._productService = _productService;
     }
+    ProductsComponent.prototype.ngOnInit = function () {
+        this.getProducts();
+    };
+    ProductsComponent.prototype.getProducts = function () {
+        var _this = this;
+        this._productService.getProducts().then(function (products) { return _this.products = products; });
+    };
     ProductsComponent = __decorate([
         core_1.Component({
             selector: 'products',
-            template: "\n    <h2>Products</h2>\n  ",
+            template: "\n    <h2>Products</h2>\n    <div class=\"col-md-4 main-products\" *ngFor=\"let product of products\" >\n      <h4>{{ product.name }}</h4>\n      <img src=\"{{ product.imageUrl }}\" alt=\"Product Image\" class=\"product-image\" >\n      <a href=\"{{ product.amazonLink }}\" class=\"btn btn-cap\" >Buy On Amazon</a>\n    </div>\n  ",
+            providers: [product_service_1.ProductService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [product_service_1.ProductService])
     ], ProductsComponent);
     return ProductsComponent;
 }());

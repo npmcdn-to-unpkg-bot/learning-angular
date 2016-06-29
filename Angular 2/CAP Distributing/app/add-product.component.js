@@ -9,15 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var product_service_1 = require('./product.service');
 var AddProductComponent = (function () {
-    function AddProductComponent() {
+    function AddProductComponent(_productService) {
+        this._productService = _productService;
     }
+    AddProductComponent.prototype.onSubmit = function () {
+        this._productService.insertProduct(this.newProduct);
+    };
+    AddProductComponent.prototype.ngOnInit = function () {
+        this.newProduct = { imageUrl: '', name: '', amazonLink: '' };
+    };
     AddProductComponent = __decorate([
         core_1.Component({
             selector: 'add-product',
-            template: "\n    <h2>Add Product</h2>\n  ",
+            templateUrl: 'html/add-product.component.html',
+            providers: [product_service_1.ProductService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [product_service_1.ProductService])
     ], AddProductComponent);
     return AddProductComponent;
 }());

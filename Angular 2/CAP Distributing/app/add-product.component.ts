@@ -1,14 +1,25 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from './product';
+import {ProductService} from './product.service';
+
 
 @Component({
   selector: 'add-product',
-  template: `
-    <h2>Add Product</h2>
-  `,
+  templateUrl: 'html/add-product.component.html',
+  providers: [ProductService],
 
 })
 
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
+  newProduct: Product;
 
+  constructor(private _productService: ProductService) {}
+
+  onSubmit() {
+    this._productService.insertProduct(this.newProduct);
+  }
+
+  ngOnInit() {
+    this.newProduct = {imageUrl: '', name: '', amazonLink: '' };
+  }
 }

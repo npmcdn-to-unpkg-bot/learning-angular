@@ -8,4 +8,9 @@ export class ProductService {
   getProducts() {
     return Promise.resolve(PRODUCTS);
   }
+
+  insertProduct(product: Product) {
+    Promise.resolve(PRODUCTS).then((products: Product[]) => products.push(product));
+  }
+
 }

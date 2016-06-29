@@ -16,6 +16,9 @@ var ProductService = (function () {
     ProductService.prototype.getProducts = function () {
         return Promise.resolve(mock_products_1.PRODUCTS);
     };
+    ProductService.prototype.insertProduct = function (product) {
+        Promise.resolve(mock_products_1.PRODUCTS).then(function (products) { return products.push(product); });
+    };
     ProductService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

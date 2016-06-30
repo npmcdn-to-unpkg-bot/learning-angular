@@ -16,6 +16,9 @@ var ProductService = (function () {
     ProductService.prototype.getProducts = function () {
         return Promise.resolve(mock_products_1.PRODUCTS);
     };
+    ProductService.prototype.deleteProduct = function (product) {
+        mock_products_1.PRODUCTS.splice(mock_products_1.PRODUCTS.indexOf(product), 1);
+    };
     ProductService.prototype.insertProduct = function (product) {
         Promise.resolve(mock_products_1.PRODUCTS).then(function (products) { return products.push(product); });
     };

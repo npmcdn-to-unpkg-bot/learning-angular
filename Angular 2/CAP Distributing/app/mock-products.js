@@ -19,6 +19,16 @@ exports.PRODUCTS = [
         imageUrl: 'http://capdistributing.com/images/audio-technica/COR150PK.jpg',
         name: 'AudioTechnica Core 150 In-Ear Headphones (Pink)',
         amazonLink: 'http://www.amazon.com/Audio-Technica-ATHCOR150PK--Ear-Headphones/dp/B00BIDHA6U/ref=sr_1_1?m=A2THIGJ83VMAAL&s=merchant-items&ie=UTF8&qid=1462024387&sr=1-1&keywords=pink'
+    },
+    {
+        imageUrl: 'http://capdistributing.com/images/fea/Picture25.png',
+        name: 'Van Halen Biker Pinup Beige Mens T-shirt',
+        amazonLink: 'http://www.amazon.com/FEA-Halen-Biker-Pinup-T-shirt/dp/B0088XZENY/ref=sr_1_4?m=A2THIGJ83VMAAL&s=merchant-items&ie=UTF8&qid=1454385544&sr=1-4&keywords=clothing'
+    },
+    {
+        imageUrl: 'http://capdistributing.com/images/fea/Picture24.png',
+        name: 'Van Halen - Winged Devil T-Shirt',
+        amazonLink: 'http://www.amazon.com/Van-Halen-Winged-T-shirt-X-large/dp/B005CQRHYO/ref=sr_1_1?m=A2THIGJ83VMAAL&s=merchant-items&ie=UTF8&qid=1454385544&sr=1-1&keywords=clothing'
     }
 ];
 //# sourceMappingURL=mock-products.js.map

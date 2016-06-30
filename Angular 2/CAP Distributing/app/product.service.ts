@@ -9,6 +9,10 @@ export class ProductService {
     return Promise.resolve(PRODUCTS);
   }
 
+  deleteProduct(product: Product) {
+    PRODUCTS.splice(PRODUCTS.indexOf(product), 1);
+  }
+
   insertProduct(product: Product) {
     Promise.resolve(PRODUCTS).then((products: Product[]) => products.push(product));
   }

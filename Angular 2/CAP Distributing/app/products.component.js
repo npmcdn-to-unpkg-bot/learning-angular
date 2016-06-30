@@ -17,6 +17,9 @@ var ProductsComponent = (function () {
     ProductsComponent.prototype.ngOnInit = function () {
         this.getProducts();
     };
+    ProductsComponent.prototype.onDeleteProduct = function (product) {
+        this._productService.deleteProduct(product);
+    };
     ProductsComponent.prototype.getProducts = function () {
         var _this = this;
         this._productService.getProducts().then(function (products) { return _this.products = products; });
@@ -24,7 +27,7 @@ var ProductsComponent = (function () {
     ProductsComponent = __decorate([
         core_1.Component({
             selector: 'products',
-            template: "\n    <h2>Products</h2>\n    <div class=\"col-md-4 main-products\" *ngFor=\"let product of products\" >\n      <h4>{{ product.name }}</h4>\n      <img src=\"{{ product.imageUrl }}\" alt=\"Product Image\" class=\"product-image\" >\n      <a href=\"{{ product.amazonLink }}\" class=\"btn btn-cap\" >Buy On Amazon</a>\n    </div>\n  ",
+            template: "\n    <h2>Products</h2>\n    <div class=\"col-md-4 main-products\" *ngFor=\"let product of products\" >\n      <h4>{{ product.name }}</h4>\n      <img src=\"{{ product.imageUrl }}\" alt=\"Product Image\" class=\"product-image\" >\n      <a href=\"{{ product.amazonLink }}\" class=\"btn btn-cap\" >Buy On Amazon</a>\n      <button class=\"btn btn-danger\" (click)=\"onDeleteProduct(product)\">Delete</button>\n    </div>\n  ",
             providers: [product_service_1.ProductService],
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])

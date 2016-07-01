@@ -15,7 +15,7 @@ var AddChannelComponent = (function () {
     AddChannelComponent = __decorate([
         core_1.Component({
             selector: 'add-channel',
-            template: "\n    <h2>Add Channel</h2>\n  ",
+            template: "\n    <h2>Add Twitch Channel</h2>\n    <div class=\"row\">\n      <div class=\"col-md-6 col-md-offset-3\">\n        <form>\n          <div class=\"form-group\">\n            <label for=\"channel-name\">Twitch Channel Name :</label>\n            <input class=\"form-control\" type=\"text\" placeholder=\"Name\" >\n          </div>\n          <button class=\"btn btn-primary\" >Add to List</button>\n        </form>\n      </div>\n    </div>\n  ",
         }), 
         __metadata('design:paramtypes', [])
     ], AddChannelComponent);

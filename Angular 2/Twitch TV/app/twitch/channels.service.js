@@ -9,12 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
+var mock_channels_1 = require('./mock-channels');
 var ChannelsService = (function () {
-    function ChannelsService() {
+    function ChannelsService(_http) {
+        this._http = _http;
+        this.channelListAPI = 'http://rest.learncode.academy/api/asku387shllqkaubhvlahr/ask37cnsgu47cnuh3sdjlkajshdf';
     }
+    ChannelsService.prototype.getChannels = function () {
+        return Promise.resolve(mock_channels_1.CHANNELS);
+    };
     ChannelsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], ChannelsService);
     return ChannelsService;
 }());

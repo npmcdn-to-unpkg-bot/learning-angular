@@ -10,3 +10,8 @@ nav p {
   nav p a {
     padding: 5px;
   }
+
+  /* CHANNEL LIST */
+.channel-list {
+  padding: 5px;
+}

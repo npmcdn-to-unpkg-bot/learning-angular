@@ -9,15 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var channels_service_1 = require('./channels.service');
 var ChannelsComponent = (function () {
-    function ChannelsComponent() {
+    function ChannelsComponent(_channelsService) {
+        this._channelsService = _channelsService;
     }
+    ChannelsComponent.prototype.ngOnInit = function () {
+        this.getChannels();
+    };
+    ChannelsComponent.prototype.getChannels = function () {
+        var _this = this;
+        this._channelsService.getChannels().then(function (channels) { return _this.channels = channels; });
+    };
     ChannelsComponent = __decorate([
         core_1.Component({
             selector: 'twitch-channels',
-            template: "\n    <h2>Twitch TV Channels</h2>\n  ",
+            template: "\n    <h2>Twitch TV Channels</h2>\n    <div *ngFor=\"let channel of channels\" class=\"channel-list\">\n      {{ channel.name }}\n    </div>\n  ",
+            providers: [channels_service_1.ChannelsService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [channels_service_1.ChannelsService])
     ], ChannelsComponent);
     return ChannelsComponent;
 }());

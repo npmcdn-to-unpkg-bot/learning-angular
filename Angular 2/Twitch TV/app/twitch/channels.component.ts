@@ -14,7 +14,7 @@ import {Channel} from './channel';
 
 })
 export class ChannelsComponent implements OnInit {
-  channels: Channel;
+  channels: Channel[];
 
   constructor(private _channelsService: ChannelsService) { }
 

@@ -18,10 +18,17 @@ var ChannelsService = (function () {
         this.channelListAPI = 'http://rest.learncode.academy/api/asku387shllqkaubhvlahr/ask37cnsgu47cnuh3sdjlkajshdf';
     }
     ChannelsService.prototype.getChannels = function () {
-        return Promise.resolve(mock_channels_1.CHANNELS);
+        return this._http.get(this.channelListAPI)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
     };
     ChannelsService.prototype.addChannel = function (channel) {
         Promise.resolve(mock_channels_1.CHANNELS).then(function (channels) { return channels.push(channel); });
+    };
+    ChannelsService.prototype.handleError = function (error) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
     };
     ChannelsService = __decorate([
         core_1.Injectable(), 

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import {HTTP_PROVIDERS} from '@angular/http';
 import {ChannelsComponent} from './twitch/channels.component';
 import {AddChannelComponent} from './twitch/add-channel.component';
 
@@ -18,7 +19,7 @@ import {AddChannelComponent} from './twitch/add-channel.component';
     </div>
   `,
   directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS],
+  providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS],
 
 })
 

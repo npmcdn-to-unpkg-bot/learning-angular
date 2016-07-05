@@ -30,7 +30,7 @@ export class AddChannelComponent implements OnInit {
   constructor(private _channelsService: ChannelsService) {}
 
   ngOnInit() {
-    this.newChannel = {name: '', id: Date.now().toString()};
+    this.newChannel = {name: '', id: ''};
   }
 
   onSubmit() {

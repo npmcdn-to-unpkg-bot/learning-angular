@@ -11,17 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var mock_channels_1 = require('./mock-channels');
 var ChannelsService = (function () {
     function ChannelsService(_http) {
         this._http = _http;
         this.channelListAPI = 'http://rest.learncode.academy/api/asku387shllqkaubhvlahr/ask37cnsgu47cnuh3sdjlkajshdf';
     }
     ChannelsService.prototype.getChannels = function () {
-        return Promise.resolve(mock_channels_1.CHANNELS);
+        return this._http.get(this.channelListAPI)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
     };
     ChannelsService.prototype.addChannel = function (channel) {
-        Promise.resolve(mock_channels_1.CHANNELS).then(function (channels) { return channels.push(channel); });
+        this._http.post(this.channelListAPI, channel)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    ChannelsService.prototype.handleError = function (error) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
     };
     ChannelsService = __decorate([
         core_1.Injectable(), 

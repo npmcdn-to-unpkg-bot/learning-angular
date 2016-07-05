@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ChannelsService} from './channels.service';
+import {Router, RouteParams} from '@angular/router-deprecated';
 import {Channel} from './channel';
 import {CHANNELS} from './mock-channels'
 
@@ -27,7 +28,7 @@ export class AddChannelComponent implements OnInit {
 
   newChannel: Channel;
 
-  constructor(private _channelsService: ChannelsService) {}
+  constructor(private _channelsService: ChannelsService, private _router: Router, private _routeParams: RouteParams) {}
 
   ngOnInit() {
     this.newChannel = {name: '', id: ''};
@@ -35,5 +36,6 @@ export class AddChannelComponent implements OnInit {
 
   onSubmit() {
     this._channelsService.addChannel(this.newChannel);
+    this._router.navigate(['Channels']);
   }
 }

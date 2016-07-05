@@ -25,6 +25,12 @@ export class ChannelsService {
       .catch(this.handleError);
   }
 
+  deleteChannel(channel: Channel) {
+    this._http.delete(this.channelListAPI + '/' + channel.id)
+      .toPromise()
+      .catch(this.handleError);
+  }
+
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

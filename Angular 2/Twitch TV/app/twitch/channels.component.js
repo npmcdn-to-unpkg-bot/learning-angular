@@ -21,10 +21,14 @@ var ChannelsComponent = (function () {
         var _this = this;
         this._channelsService.getChannels().then(function (channels) { return _this.channels = channels; });
     };
+    ChannelsComponent.prototype.onDeleteChannel = function ($event, channel) {
+        event.stopPropagation();
+        this._channelsService.deleteChannel(channel);
+    };
     ChannelsComponent = __decorate([
         core_1.Component({
             selector: 'twitch-channels',
-            template: "\n    <h2>Twitch TV Channels</h2>\n    <div *ngFor=\"let channel of channels\" class=\"channel-list\">\n      {{ channel.name }}\n    </div>\n  ",
+            template: "\n    <h2>Twitch TV Channels</h2>\n    <div *ngFor=\"let channel of channels\" class=\"channel-list\" >\n      {{ channel.name }}\n      <button class=\"btn btn-danger delete-channel\" (click)=\"onDeleteChannel($event, channel)\">X</button>\n    </div>\n  ",
             providers: [channels_service_1.ChannelsService],
         }), 
         __metadata('design:paramtypes', [channels_service_1.ChannelsService])

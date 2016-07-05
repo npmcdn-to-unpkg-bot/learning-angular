@@ -28,6 +28,11 @@ var ChannelsService = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    ChannelsService.prototype.deleteChannel = function (channel) {
+        this._http.delete(this.channelListAPI + '/' + channel.id)
+            .toPromise()
+            .catch(this.handleError);
+    };
     ChannelsService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);

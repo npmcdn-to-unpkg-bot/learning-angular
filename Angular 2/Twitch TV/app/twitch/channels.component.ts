@@ -7,7 +7,7 @@ import {Channel} from './channel';
   template: `
     <h2>Twitch TV Channels</h2>
     <div *ngFor="let channel of channels" class="channel-list" >
-      {{ channel.name }}
+      {{ channel.display_name }}
       <button class="btn btn-danger delete-channel" (click)="onDeleteChannel($event, channel)">X</button>
     </div>
   `,

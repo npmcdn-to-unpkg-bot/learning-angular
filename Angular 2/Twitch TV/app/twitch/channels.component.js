@@ -28,7 +28,7 @@ var ChannelsComponent = (function () {
     ChannelsComponent = __decorate([
         core_1.Component({
             selector: 'twitch-channels',
-            template: "\n    <h2>Twitch TV Channels</h2>\n    <div *ngFor=\"let channel of channels\" class=\"channel-list\" >\n      {{ channel.name }}\n      <button class=\"btn btn-danger delete-channel\" (click)=\"onDeleteChannel($event, channel)\">X</button>\n    </div>\n  ",
+            template: "\n    <h2>Twitch TV Channels</h2>\n    <div *ngFor=\"let channel of channels\" class=\"channel-list\" >\n      {{ channel.display_name }}\n      <button class=\"btn btn-danger delete-channel\" (click)=\"onDeleteChannel($event, channel)\">X</button>\n    </div>\n  ",
             providers: [channels_service_1.ChannelsService],
         }), 
         __metadata('design:paramtypes', [channels_service_1.ChannelsService])

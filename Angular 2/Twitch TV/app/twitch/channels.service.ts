@@ -14,8 +14,31 @@ export class ChannelsService {
   getChannels() {
     return this._http.get(this.channelListAPI)
       .toPromise()
-      .then(response => response.json())
+      .then(response => this.getTwitchChannelInfo(response.json()))
       .catch(this.handleError);
+  }
+
+  getTwitchChannelInfo(channelNamesArray) {
+    var twitchData = [];
+    var twitchUrl = 'https://api.twitch.tv/kraken/channels/';
+    channelNamesArray.forEach(function(channel) {
+
+      var request = new XMLHttpRequest();
+      request.open('GET', twitchUrl + channel.name, true);
+      request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+          twitchData.push(JSON.parse(request.responseText));
+        } else {
+          console.log('We reached our target server, but it returned an error');
+        }
+      };
+      request.onerror = function() {
+        console.log('There was a connection error of some sort');
+      };
+      request.send();
+
+    })  //End channelNamesArray.forEach
+    return twitchData;
   }
 
   addChannel(channel: Channel) {

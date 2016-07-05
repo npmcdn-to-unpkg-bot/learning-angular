@@ -17,10 +17,32 @@ var ChannelsService = (function () {
         this.channelListAPI = 'http://rest.learncode.academy/api/asku387shllqkaubhvlahr/ask37cnsgu47cnuh3sdjlkajshdf';
     }
     ChannelsService.prototype.getChannels = function () {
+        var _this = this;
         return this._http.get(this.channelListAPI)
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return _this.getTwitchChannelInfo(response.json()); })
             .catch(this.handleError);
+    };
+    ChannelsService.prototype.getTwitchChannelInfo = function (channelNamesArray) {
+        var twitchData = [];
+        var twitchUrl = 'https://api.twitch.tv/kraken/channels/';
+        channelNamesArray.forEach(function (channel) {
+            var request = new XMLHttpRequest();
+            request.open('GET', twitchUrl + channel.name, true);
+            request.onload = function () {
+                if (request.status >= 200 && request.status < 400) {
+                    twitchData.push(JSON.parse(request.responseText));
+                }
+                else {
+                    console.log('We reached our target server, but it returned an error');
+                }
+            };
+            request.onerror = function () {
+                console.log('There was a connection error of some sort');
+            };
+            request.send();
+        }); //End channelNamesArray.forEach
+        return twitchData;
     };
     ChannelsService.prototype.addChannel = function (channel) {
         this._http.post(this.channelListAPI, channel)

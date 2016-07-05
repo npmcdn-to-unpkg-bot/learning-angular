@@ -15,7 +15,7 @@ var AddChannelComponent = (function () {
         this._channelsService = _channelsService;
     }
     AddChannelComponent.prototype.ngOnInit = function () {
-        this.newChannel = { name: '', id: Date.now().toString() };
+        this.newChannel = { name: '', id: '' };
     };
     AddChannelComponent.prototype.onSubmit = function () {
         this._channelsService.addChannel(this.newChannel);

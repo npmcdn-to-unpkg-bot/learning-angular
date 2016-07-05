@@ -19,7 +19,10 @@ export class ChannelsService {
   }
 
   addChannel(channel: Channel) {
-    Promise.resolve(CHANNELS).then((channels: Channel[]) => channels.push(channel) );
+    this._http.post(this.channelListAPI, channel)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
   }
 
   private handleError(error: any) {

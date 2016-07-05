@@ -15,4 +15,8 @@ export class ChannelsService {
     return Promise.resolve(CHANNELS);
   }
 
+  addChannel(channel: Channel) {
+    Promise.resolve(CHANNELS).then((channels: Channel[]) => channels.push(channel) );
+  }
+
 }

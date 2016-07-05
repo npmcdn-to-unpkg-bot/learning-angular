@@ -20,6 +20,9 @@ var ChannelsService = (function () {
     ChannelsService.prototype.getChannels = function () {
         return Promise.resolve(mock_channels_1.CHANNELS);
     };
+    ChannelsService.prototype.addChannel = function (channel) {
+        Promise.resolve(mock_channels_1.CHANNELS).then(function (channels) { return channels.push(channel); });
+    };
     ChannelsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

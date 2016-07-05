@@ -9,15 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var channels_service_1 = require('./channels.service');
 var AddChannelComponent = (function () {
-    function AddChannelComponent() {
+    function AddChannelComponent(_channelsService) {
+        this._channelsService = _channelsService;
     }
+    AddChannelComponent.prototype.ngOnInit = function () {
+        this.newChannel = { name: '', id: Date.now().toString() };
+    };
+    AddChannelComponent.prototype.onSubmit = function () {
+        this._channelsService.addChannel(this.newChannel);
+    };
     AddChannelComponent = __decorate([
         core_1.Component({
             selector: 'add-channel',
-            template: "\n    <h2>Add Twitch Channel</h2>\n    <div class=\"row\">\n      <div class=\"col-md-6 col-md-offset-3\">\n        <form>\n          <div class=\"form-group\">\n            <label for=\"channel-name\">Twitch Channel Name :</label>\n            <input class=\"form-control\" type=\"text\" placeholder=\"Name\" >\n          </div>\n          <button class=\"btn btn-primary\" >Add to List</button>\n        </form>\n      </div>\n    </div>\n  ",
+            template: "\n    <h2>Add Twitch Channel</h2>\n    <div class=\"row\">\n      <div class=\"col-md-6 col-md-offset-3\">\n        <form #myForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\n          <div class=\"form-group\">\n            <label for=\"channel-name\">Twitch Channel Name :</label>\n            <input class=\"form-control\" type=\"text\" placeholder=\"Name\" [(ngModel)]=\"newChannel.name\" ngControl=\"name\" required>\n          </div>\n          <button class=\"btn btn-primary\" >Add to List</button>\n        </form>\n      </div>\n    </div>\n  ",
+            providers: [channels_service_1.ChannelsService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [channels_service_1.ChannelsService])
     ], AddChannelComponent);
     return AddChannelComponent;
 }());

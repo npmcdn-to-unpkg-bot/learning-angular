@@ -25,22 +25,43 @@ var ChannelsService = (function () {
     };
     ChannelsService.prototype.getTwitchChannelInfo = function (channelNamesArray) {
         var twitchData = [];
-        var twitchUrl = 'https://api.twitch.tv/kraken/channels/';
+        var twitchChannelUrl = 'https://api.twitch.tv/kraken/channels/';
+        var twitchStreamUrl = 'https://api.twitch.tv/kraken/streams/';
         channelNamesArray.forEach(function (channel) {
-            var request = new XMLHttpRequest();
-            request.open('GET', twitchUrl + channel.name, true);
-            request.onload = function () {
-                if (request.status >= 200 && request.status < 400) {
-                    twitchData.push(JSON.parse(request.responseText));
+            //Channel Requests
+            var channelRequest = new XMLHttpRequest();
+            channelRequest.open('GET', twitchChannelUrl + channel.name, true);
+            channelRequest.onload = function () {
+                if (channelRequest.status >= 200 && channelRequest.status < 400) {
+                    var channelInfo = JSON.parse(channelRequest.responseText);
+                    var streamsInfo;
+                    //Streams Requests
+                    var streamsRequest = new XMLHttpRequest();
+                    streamsRequest.open('GET', twitchStreamUrl + channel.name, true);
+                    streamsRequest.onload = function () {
+                        if (streamsRequest.status >= 200 && streamsRequest.status < 400) {
+                            streamsInfo = JSON.parse(streamsRequest.responseText);
+                            //Push to Array
+                            twitchData.push({ 'streamsInfo': streamsInfo, 'channelInfo': channelInfo });
+                        }
+                        else {
+                            console.log('We reached our target server, but it returned an error');
+                        }
+                    };
+                    streamsRequest.onerror = function () {
+                        console.log('There was a connection error of some sort');
+                    };
+                    streamsRequest.send();
                 }
                 else {
                     console.log('We reached our target server, but it returned an error');
                 }
             };
-            request.onerror = function () {
+            channelRequest.onerror = function () {
                 console.log('There was a connection error of some sort');
             };
-            request.send();
+            channelRequest.send();
+            //End Channel Request
         }); //End channelNamesArray.forEach
         return twitchData;
     };

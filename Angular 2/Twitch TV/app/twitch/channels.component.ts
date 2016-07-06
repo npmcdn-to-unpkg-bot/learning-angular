@@ -6,8 +6,11 @@ import {Channel} from './channel';
   selector: 'twitch-channels',
   template: `
     <h2>Twitch TV Channels</h2>
-    <div *ngFor="let channel of channels" class="channel-list" >
-      {{ channel.display_name }}
+    <div *ngFor="let channel of channels" class="channel-list channel-online" [class.channel-offline]="channel.streamsInfo.stream == null || channel.streamsInfo.stream == undefined" >
+      <img src="{{ channel.channelInfo.logo }}" class="channel-logo">
+      <a href="{{ channel.channelInfo.url }}" target="_blank">
+        <h4>{{ channel.channelInfo.display_name }}</h4>
+      </a>
       <button class="btn btn-danger delete-channel" (click)="onDeleteChannel($event, channel)">X</button>
     </div>
   `,

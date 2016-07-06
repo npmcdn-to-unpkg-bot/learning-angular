@@ -16,10 +16,19 @@ nav p {
   padding: 5px;
   margin: 5px;
   position: relative;
-  background: #ddd;
-    /* Placeholder till I get more info from Twitch.tv about the channels */
-  min-height: 50px;
+  min-height: 70px;
 }
+  .channel-online {
+    background: #4dff77;
+  }
+  .channel-offline {
+    background: #ff9191;
+  }
+  .channel-logo {
+    float: left;
+    width: 50px;
+    margin: 5px;
+  }
   .delete-channel {
     position: absolute;
     top: 5px;

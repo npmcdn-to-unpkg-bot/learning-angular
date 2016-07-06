@@ -42,7 +42,7 @@ var ChannelsService = (function () {
                         if (streamsRequest.status >= 200 && streamsRequest.status < 400) {
                             streamsInfo = JSON.parse(streamsRequest.responseText);
                             //Push to Array
-                            twitchData.push({ 'streamsInfo': streamsInfo, 'channelInfo': channelInfo });
+                            twitchData.push({ 'name': channel.name, 'id': channel.id, 'streamsInfo': streamsInfo, 'channelInfo': channelInfo });
                         }
                         else {
                             console.log('We reached our target server, but it returned an error');

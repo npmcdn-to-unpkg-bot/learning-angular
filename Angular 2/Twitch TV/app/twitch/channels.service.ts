@@ -62,6 +62,14 @@ export class ChannelsService {
     return twitchData;
   }
 
+  findChannel(input: string) {
+    var findChannelUrl = 'https://api.twitch.tv/kraken/search/channels?limit=1&q=';
+    return this._http.get(findChannelUrl + input)
+      .toPromise()
+      .then(response => response.json() )
+      .catch(console.log('There was an error'));
+  }
+
   addChannel(channel: Channel) {
     this._http.post(this.channelListAPI, channel)
       .toPromise()

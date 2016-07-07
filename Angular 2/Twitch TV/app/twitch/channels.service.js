@@ -65,6 +65,13 @@ var ChannelsService = (function () {
         }); //End channelNamesArray.forEach
         return twitchData;
     };
+    ChannelsService.prototype.findChannel = function (input) {
+        var findChannelUrl = 'https://api.twitch.tv/kraken/search/channels?limit=1&q=';
+        return this._http.get(findChannelUrl + input)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(console.log('There was an error'));
+    };
     ChannelsService.prototype.addChannel = function (channel) {
         this._http.post(this.channelListAPI, channel)
             .toPromise()

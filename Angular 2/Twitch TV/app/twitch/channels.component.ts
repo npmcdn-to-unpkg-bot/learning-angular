@@ -11,6 +11,9 @@ import {Channel} from './channel';
       <a href="{{ channel.channelInfo.url }}" target="_blank">
         <h4>{{ channel.channelInfo.display_name }}</h4>
       </a>
+      <span *ngIf="channel.streamsInfo.stream === null">Offline</span>
+      <span *ngIf="channel.streamsInfo.stream != null">Now Streaming: {{ channel.streamsInfo.stream.game }}</span><br>
+      <span *ngIf="channel.streamsInfo.stream != null">Viewers: {{channel.streamsInfo.stream.viewers}}</span>
       <button class="btn btn-danger delete-channel" (click)="onDeleteChannel($event, channel)">X</button>
     </div>
   `,

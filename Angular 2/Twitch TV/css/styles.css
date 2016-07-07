@@ -29,6 +29,9 @@ nav p {
     width: 50px;
     margin: 5px;
   }
+  h4 {
+    line-height: 0;
+  }
   .delete-channel {
     position: absolute;
     top: 5px;

@@ -67,7 +67,7 @@ export class ChannelsService {
     return this._http.get(findChannelUrl + input)
       .toPromise()
       .then(response => response.json() )
-      .catch(this.handleError);
+      .catch(console.log('There was an error'));
   }
 
   addChannel(channel: Channel) {

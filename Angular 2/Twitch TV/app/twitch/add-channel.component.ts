@@ -54,6 +54,7 @@ export class AddChannelComponent implements OnInit {
   }
 
   onSubmit() {
+    this.newChannel = {name: this.data.display_name, id: ''};
     this._channelsService.addChannel(this.newChannel);
     this._router.navigate(['Channels']);
   }

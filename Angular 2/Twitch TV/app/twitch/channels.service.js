@@ -70,7 +70,7 @@ var ChannelsService = (function () {
         return this._http.get(findChannelUrl + input)
             .toPromise()
             .then(function (response) { return response.json(); })
-            .catch(this.handleError);
+            .catch(console.log('There was an error'));
     };
     ChannelsService.prototype.addChannel = function (channel) {
         this._http.post(this.channelListAPI, channel)

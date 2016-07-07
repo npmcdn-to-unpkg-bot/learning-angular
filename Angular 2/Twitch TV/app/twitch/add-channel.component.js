@@ -37,6 +37,7 @@ var AddChannelComponent = (function () {
             .subscribe(function (data) { return _this.data = data.channels[0]; });
     };
     AddChannelComponent.prototype.onSubmit = function () {
+        this.newChannel = { name: this.data.display_name, id: '' };
         this._channelsService.addChannel(this.newChannel);
         this._router.navigate(['Channels']);
     };

@@ -1,0 +1,44 @@
+  /* MAIN */
+h1, h2 {
+  text-align: center;
+}
+
+  /* NAV */
+nav p {
+  text-align: center;
+}
+  nav p a {
+    padding: 5px;
+  }
+
+  /* CHANNEL LIST */
+.channel-list {
+  padding: 5px;
+  margin: 5px;
+  position: relative;
+  min-height: 70px;
+}
+  .channel-online {
+    background: #4dff77;
+  }
+  .channel-offline {
+    background: #ff9191;
+  }
+  .channel-logo {
+    float: left;
+    width: 50px;
+    margin: 5px;
+  }
+  h4 {
+    line-height: 0;
+  }
+  .delete-channel {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  /* ADD CHANNEL */
+.predictive-text {
+  padding-left: 10px;
+}
